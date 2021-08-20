@@ -1,7 +1,13 @@
 package model;
 
+import enumerator.EROLE;
+import enumerator.ESEX;
+
 import java.util.UUID;
 
+/**
+ * blaise irakoze
+ */
 public class User {
 	private String id = UUID.randomUUID().toString();
 	private String username;
@@ -9,16 +15,29 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private int age;
-	private String sex;
+	private ESEX sex;
 	private String phoneNumber;
-	private String role; // guest, admin
-	
+	private EROLE role;
+	private String type;
+
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public User() {
 		super();
 	}
-	public User(String username, String password, String firstName, String lastName, int age, String sex,
-			String phoneNumber, String role) {
+	
+	public User(String username, String password) {
 		super();
+		this.username = username;
+		this.password = password;
+	}
+
+	public User(String id, String username, String password, String firstName, String lastName, int age, ESEX sex, String phoneNumber, EROLE role, String type) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -27,7 +46,9 @@ public class User {
 		this.sex = sex;
 		this.phoneNumber = phoneNumber;
 		this.role = role;
+		this.type = type;
 	}
+
 	public String getId() {
 		return id;
 	}
@@ -64,24 +85,30 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getSex() {
+
+	public ESEX getSex() {
 		return sex;
 	}
-	public void setSex(String sex) {
+
+	public void setSex(ESEX sex) {
 		this.sex = sex;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public String getRole() {
+
+	public EROLE getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+
+	public void setRole(EROLE role) {
 		this.role = role;
 	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
